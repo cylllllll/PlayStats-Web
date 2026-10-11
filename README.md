@@ -1,28 +1,46 @@
-# PlayStats 网站
+<div align="center">
+  <img src="public/assets/app-icon.jpg" alt="PlayStats" width="96" />
+  <h1>PlayStats</h1>
+  <p><strong>每一场游戏，都有你的记录。</strong></p>
+  <p>为 PlayStation 玩家打造的数据伴侣，回顾、整理和分享你的游戏历程。</p>
+  <p>
+    <a href="https://apps.apple.com/us/app/playstats/id6799940098">App Store 下载</a> ·
+    <a href="https://testflight.apple.com/join/JAkUz1B6">加入 TestFlight</a>
+  </p>
+  <p>iPhone · iPad · 中文 / English</p>
+</div>
 
-简洁的 PlayStats App 展示页：产品介绍、App Store / TestFlight 入口和中英文应用截图，支持 iPhone、iPad、Duo 预览切换。使用 Next.js 静态导出。
+## 让你的游戏历程清晰可见
 
-## 开发
+- **游玩统计**：浏览游戏库、最近游玩与累计时长，了解自己的游戏足迹。
+- **PSN 消费**：查看消费记录与年度趋势，回顾每一份游戏投入。
+- **奖杯日历**：按日期查看奖杯记录，整理白金收藏与解锁进度。
+- **实时活动与小组件**：在锁定屏幕、灵动岛和主屏幕查看游戏信息。
+- **分享卡片**：将游玩时长和奖杯进度生成图片，分享值得纪念的时刻。
 
-```sh
-pnpm install
-pnpm dev
-```
+## App 预览
 
-## 下载链接
+<p align="center">
+  <img src="public/assets/screenshots/01-insights.jpg" alt="PlayStats 游玩统计" width="23%" />
+  <img src="public/assets/screenshots/02-trophies.jpg" alt="PlayStats 奖杯日历" width="23%" />
+  <img src="public/assets/screenshots/03-live-activity.jpg" alt="PlayStats 实时活动" width="23%" />
+  <img src="public/assets/screenshots/04-share.jpg" alt="PlayStats 分享卡片" width="23%" />
+</p>
 
-`src/config.ts` 已配置官方 App Store 地址与 TestFlight 邀请链接。需要覆盖时，复制 `.env.example` 为 `.env.local` 并修改地址。环境变量在构建时写入，修改后须重新构建。
+## Your gaming story, in stats
 
-## 构建
+PlayStats is an independent companion app for PlayStation players. Bring your library, playtime, trophies and PSN spending together to explore and share your gaming journey.
 
-```sh
-pnpm build
-```
+- **Playtime stats** — Explore your library, recently played games and total hours.
+- **PSN spending** — Review your transactions and annual spending trends.
+- **Trophy calendar** — Look back at unlocks by date and explore your platinum collection.
+- **Live Activities & widgets** — Keep your gaming information on the Lock Screen, Dynamic Island and Home Screen.
+- **Share cards** — Turn playtime and trophy progress into images to save and share.
 
-将 `out/` 目录部署到静态托管服务。截图来自 PlayStats-AppStore-Titles-Yellow 的 iphone、ipad、duo 中英文素材，按原比例转成 JPEG；网站不展示模板中的虚构评分、价格或评论。
+[Download on the App Store](https://apps.apple.com/us/app/playstats/id6799940098) · [Join TestFlight](https://testflight.apple.com/join/JAkUz1B6)
 
-首次访问按浏览器语言选择中文或英文；右上角可手动切换并在本机记住选择。品牌图标使用用户提供的图片；TestFlight 图标来自 cylllllll/zilazila 的 public/assets/TestFlight.png，App Store 使用与该项目相同的 FaApple。
+---
 
-外观支持跟随系统、亮色、暗色。手动选择保存在本机；跟随系统时会响应系统外观变化。
+PlayStats 是独立的第三方应用，与 Sony Interactive Entertainment Inc. 无官方关联。
 
-VPS 部署准备参见 [deploy/README.md](deploy/README.md)，附独立 Nginx 站点配置示例。
+PlayStats is an independent third-party app and is not affiliated with Sony Interactive Entertainment Inc.
