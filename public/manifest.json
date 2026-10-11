@@ -1,20 +1,16 @@
 {
-	"name": "Your App Name",
-	"short_name": "YourApp",
-	"description": "Here you can write a brief description of your application. Tell users about its main features and benefits in 1-2 sentences.",
+	"name": "PlayStats",
+	"short_name": "PlayStats",
 	"start_url": "/",
 	"display": "standalone",
-	"background_color": "#ffffff",
-	"theme_color": "#6d28d9",
-	"orientation": "portrait-primary",
-	"scope": "/",
-	"lang": "en",
-	"categories": ["productivity", "utilities"],
+	"background_color": "#101113",
+	"theme_color": "#f5dc42",
+	"lang": "zh-CN",
 	"icons": [
 		{
-			"src": "/favicon.svg",
-			"sizes": "any",
-			"type": "image/svg+xml"
+			"src": "/assets/app-icon.jpg",
+			"sizes": "886x886",
+			"type": "image/jpeg"
 		}
 	]
 }
