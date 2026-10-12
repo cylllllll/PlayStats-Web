@@ -76,7 +76,9 @@ export const metadata: Metadata = {
 		description: site.descriptions.cn,
 		images: [
 			{
-				url: "/og-image.png",
+				url: "/og-image-v2.jpg",
+				secureUrl: `${site.url}/og-image-v2.jpg`,
+				type: "image/jpeg",
 				width: 1200,
 				height: 630,
 				alt: "PlayStats — 游戏库、游玩时长、奖杯与消费",
@@ -88,7 +90,10 @@ export const metadata: Metadata = {
 		title: site.titles.cn,
 		description: site.descriptions.cn,
 		images: [
-			{ url: "/og-image.png", alt: "PlayStats — 游戏库、游玩时长、奖杯与消费" },
+			{
+				url: "/og-image-v2.jpg",
+				alt: "PlayStats — 游戏库、游玩时长、奖杯与消费",
+			},
 		],
 	},
 };
@@ -137,7 +142,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="zh-CN" suppressHydrationWarning>
+		<html lang="zh-CN" data-theme="dark" suppressHydrationWarning>
 			<head>
 				<script
 					id="structured-data"
@@ -148,7 +153,7 @@ export default function RootLayout({
 				/>
 				<script
 					dangerouslySetInnerHTML={{
-						__html: `(function(){var t='system';try{t=localStorage.getItem('playstats-theme')||'system'}catch(e){}document.documentElement.dataset.theme=t==='light'||t==='dark'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'})();`,
+						__html: `(function(){var t='dark';try{var s=localStorage.getItem('playstats-theme');if(s==='light'||s==='dark'||s==='system')t=s}catch(e){}document.documentElement.dataset.theme=t==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):t})();`,
 					}}
 				/>
 			</head>

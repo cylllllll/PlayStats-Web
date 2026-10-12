@@ -21,8 +21,8 @@ const copy = {
 		home: "PlayStats 首页",
 		explore: "探索 App",
 		eyebrow: "为 PlayStation 玩家打造",
-		intro: "游戏库、游玩时长、奖杯与消费。",
-		introEnd: "在 PlayStats，回顾你的游戏历程。",
+		intro: ["游戏库、", "游玩时长", "、奖杯与消费。"],
+		introEnd: ["在 PlayStats，回顾你的", "游戏历程", "。"],
 		download: "下载 iPhone 与 iPad App",
 		beta: "抢先体验新功能",
 		join: "加入 TestFlight",
@@ -41,8 +41,8 @@ const copy = {
 		home: "PlayStats home",
 		explore: "Explore the app",
 		eyebrow: "BUILT FOR PLAYSTATION PLAYERS",
-		intro: "Your library, playtime, trophies and spending.",
-		introEnd: "Rediscover your gaming journey with PlayStats.",
+		intro: ["Your library, ", "playtime", ", trophies and spending."],
+		introEnd: ["Rediscover your ", "gaming journey", " with PlayStats."],
 		download: "Download on the",
 		beta: "Test it on",
 		join: "TestFlight",
@@ -73,11 +73,10 @@ const copy = {
 		],
 	},
 };
-type Device = "iphone" | "ipad" | "duo";
+type Device = "iphone" | "ipad";
 const devices: { id: Device; label: string }[] = [
 	{ id: "iphone", label: "iPhone" },
 	{ id: "ipad", label: "iPad" },
-	{ id: "duo", label: "Duo" },
 ];
 
 export default function HomePage() {
@@ -116,12 +115,7 @@ export default function HomePage() {
 		device === "iphone"
 			? `/assets/screenshots/${language === "en" ? "en/" : ""}`
 			: `/assets/screenshots/${device}/${language}/`;
-	const dimensions =
-		device === "iphone"
-			? [1284, 2778]
-			: device === "ipad"
-				? [2048, 2732]
-				: [2007, 2853];
+	const dimensions = device === "iphone" ? [1284, 2778] : [2048, 2732];
 	return (
 		<>
 			<header className="header wrap">
@@ -159,8 +153,14 @@ export default function HomePage() {
 							{t.eyebrow}
 						</p>
 						<h1 id="hero-title" className="hero-description">
-							{t.intro}
-							<span>{t.introEnd}</span>
+							{t.intro[0]}
+							<em>{t.intro[1]}</em>
+							{t.intro[2]}
+							<span>
+								{t.introEnd[0]}
+								<em>{t.introEnd[1]}</em>
+								{t.introEnd[2]}
+							</span>
 						</h1>
 						<div className="downloads">
 							<a

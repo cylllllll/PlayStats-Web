@@ -8,12 +8,13 @@ import { useLanguage } from "./language";
 type Theme = "system" | "light" | "dark";
 export default function ThemeSwitch() {
 	const { language } = useLanguage();
-	const [theme, setTheme] = useState<Theme>("system");
+	const [theme, setTheme] = useState<Theme>("dark");
 	useEffect(() => {
-		let preference: Theme = "system";
+		let preference: Theme = "dark";
 		try {
 			const saved = localStorage.getItem("playstats-theme");
-			if (saved === "light" || saved === "dark") preference = saved;
+			if (saved === "light" || saved === "dark" || saved === "system")
+				preference = saved;
 		} catch {}
 		setTheme(preference);
 		const media = matchMedia("(prefers-color-scheme: dark)");

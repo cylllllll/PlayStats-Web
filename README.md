@@ -50,8 +50,10 @@ PlayStats is an independent third-party app and is not affiliated with Sony Inte
 默认正式地址为 `https://playstats.pages.dev`。更换域名时，在构建前设置 `NEXT_PUBLIC_SITE_URL`（参考 `.env.example`）；canonical、robots.txt、sitemap.xml、Open Graph、Twitter Card 和结构化数据会使用同一个地址。
 
 - 标题与描述在静态 HTML 中输出，语言切换后更新浏览器标题和描述。
-- 分享图片为 `public/og-image.png`，尺寸 1200 × 630；分享卡片默认使用中文描述。
+- 分享图片为 `public/og-image-v2.jpg`（轻量 JPG，旧 PNG 地址仍保留），尺寸 1200 × 630；分享卡片默认使用中文描述。
 - Logo 与 favicon 使用透明矢量图，SVG favicon 自动适配浏览器的亮暗配色，并提供透明 PNG、ICO 和 Apple Touch Icon。
 - JSON-LD 包含 WebSite 与 MobileApplication 的真实应用信息；未添加未核实的评分或价格。
 
 发布后可向搜索引擎提交 `https://playstats.pages.dev/sitemap.xml`。社交平台的旧预览可能需要刷新其缓存。
+
+Telegram 使用静态 HTML 内的 Open Graph 信息，不依赖 JavaScript。部署完成后可发送 `https://playstats.pages.dev/?preview=2` 测试新链接的预览；已发送的链接可能仍使用 Telegram 的缓存。若新链接也没有预览，需检查正式站点与图片是否能被公开抓取，以及 Cloudflare 的访问或机器人拦截设置。

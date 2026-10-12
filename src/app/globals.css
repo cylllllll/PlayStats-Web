@@ -45,7 +45,7 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 @media (max-width: 380px) { .header.wrap { width: calc(100% - 24px); }.header .wordmark { font-size: 15px; }.header .app-icon { width: 26px; height: 26px; } }
 
 .screenshots > figure { flex: 0 0 280px; scroll-snap-align: start; }
-.screenshots-ipad > figure, .screenshots-duo > figure { flex-basis: 380px; }
+.screenshots-ipad > figure { flex-basis: 380px; }
 .screenshots:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
 .gallery-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
 .gallery-toolbar .device-switch { margin: 0; }
@@ -54,7 +54,7 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 .gallery-controls button { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--text); cursor: pointer; }
 .gallery-controls button:hover { background: var(--control); }
 @media (max-width: 600px) { .gallery-toolbar { flex-wrap: wrap; gap: 12px; }.gallery-controls { margin-left: auto; }.gallery-controls span { display: none; } }
-@media (max-width: 520px) { .screenshots > figure { flex-basis: 78%; }.screenshots-ipad > figure, .screenshots-duo > figure { flex-basis: 86%; }.screenshot-link:hover { transform: none; }.gallery-toolbar .device-switch button { min-width: 0; padding-inline: 12px; }.gallery-controls button { width: 30px; height: 30px; } }
+@media (max-width: 520px) { .screenshots > figure { flex-basis: 78%; }.screenshots-ipad > figure { flex-basis: 86%; }.screenshot-link:hover { transform: none; }.gallery-toolbar .device-switch button { min-width: 0; padding-inline: 12px; }.gallery-controls button { width: 30px; height: 30px; } }
 
 .icon-select { position: relative; }
 .icon-control { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--control); color: var(--nav-text); cursor: pointer; list-style: none; transition: background .15s, color .15s; }
@@ -131,5 +131,9 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 .logo-body { fill: #1d1d1d; }
 :root[data-theme="dark"] .logo-body { fill: #f5f5f2; }
 .hero-copy .hero-description { margin: 0 0 26px; color: var(--body-text); font-size: clamp(24px, 2.4vw, 34px); font-weight: 500; line-height: 1.6; letter-spacing: -.4px; }
-.hero-description span { display: block; margin-top: 4px; color: var(--muted); font-size: .85em; font-weight: 400; }
+.hero-description > span { display: block; margin-top: 4px; color: var(--muted); font-size: .85em; font-weight: 400; }
 @media (max-width: 600px) { .hero-copy .hero-description { margin-bottom: 20px; font-size: clamp(18px, 5vw, 23px); line-height: 1.6; letter-spacing: 0; } }
+
+/* Soft gold highlights echo the brand without competing with the covers. */
+.hero-description em { font-style: normal; font-weight: inherit; color: color-mix(in srgb, var(--accent-text) 62%, var(--body-text)); }
+.hero-description > span em { color: color-mix(in srgb, var(--accent-text) 45%, var(--muted)); }
