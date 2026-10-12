@@ -1,17 +1,28 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { useLanguage } from "./language";
-
-const columns = Array.from({ length: 3 }, (_, column) =>
-	Array.from({ length: 16 }, (_, row) => column + row * 3 + 1),
-);
 
 export default function CoverWall() {
 	const { language } = useLanguage();
 	const wallRef = useRef<HTMLElement>(null);
 	const motion = useRef({ position: 0, speed: 1, impulse: 0 });
+	const [columnCount, setColumnCount] = useState(4);
+	const columns = Array.from({ length: columnCount }, (_, column) =>
+		Array.from(
+			{ length: Math.ceil(48 / columnCount) },
+			(_, row) => column + row * columnCount + 1,
+		).filter((cover) => cover <= 48),
+	);
 	const [reducedMotion, setReducedMotion] = useState(false);
+
+	useEffect(() => {
+		const desktop = matchMedia("(min-width: 901px)");
+		const update = () => setColumnCount(desktop.matches ? 5 : 4);
+		update();
+		desktop.addEventListener("change", update);
+		return () => desktop.removeEventListener("change", update);
+	}, []);
 
 	useEffect(() => {
 		const preference = matchMedia("(prefers-reduced-motion: reduce)");
@@ -30,6 +41,7 @@ export default function CoverWall() {
 			return;
 		}
 		const tracks = [...wall.querySelectorAll<HTMLElement>(".cover-track")];
+		if (tracks.length !== columnCount) return;
 		let frame = 0;
 		let previous = 0;
 		let visible = false;
@@ -60,7 +72,7 @@ export default function CoverWall() {
 				if (!height) return;
 				const distance =
 					(state.position * (1 + index * 0.12) + index * 93) % height;
-				const y = index === 1 ? distance - height : -distance;
+				const y = index % 2 === 1 ? distance - height : -distance;
 				track.style.transform = `translate3d(0, ${y}px, 0)`;
 			});
 			frame = requestAnimationFrame(tick);
@@ -144,7 +156,7 @@ export default function CoverWall() {
 			window.removeEventListener("scroll", onScroll);
 			document.removeEventListener("visibilitychange", updatePlayback);
 		};
-	}, [reducedMotion]);
+	}, [reducedMotion, columnCount]);
 
 	return (
 		<section
@@ -153,8 +165,12 @@ export default function CoverWall() {
 			aria-label={language === "cn" ? "游戏封面墙" : "Game cover wall"}
 		>
 			<div className="cover-stage" aria-hidden="true">
-				{columns.map((covers) => (
-					<div className="cover-column" key={covers[0]}>
+				{columns.map((covers, column) => (
+					<div
+						className="cover-column"
+						key={covers[0]}
+						style={{ "--column-offset": `${column * 93}px` } as CSSProperties}
+					>
 						<div className="cover-track">
 							{[0, 1].map((repeat) => (
 								<div className="cover-group" key={repeat}>
