@@ -9,6 +9,7 @@ import {
 	FiGlobe,
 } from "react-icons/fi";
 import { RiTelegram2Fill } from "react-icons/ri";
+import BrandMark from "@/components/BrandMark";
 import { site } from "@/config";
 import CoverWall from "./cover-wall";
 import IconSelect from "./icon-select";
@@ -125,13 +126,7 @@ export default function HomePage() {
 		<>
 			<header className="header wrap">
 				<a className="wordmark" href="/" aria-label={t.home}>
-					<img
-						className="app-icon"
-						src="/assets/app-icon.jpg"
-						alt=""
-						width={40}
-						height={40}
-					/>
+					<BrandMark />
 					PlayStats
 				</a>
 				<nav
@@ -163,13 +158,10 @@ export default function HomePage() {
 							<span />
 							{t.eyebrow}
 						</p>
-						<h1 id="hero-title" className="sr-only">
-							{site.name}
+						<h1 id="hero-title" className="hero-description">
+							{t.intro}
+							<span>{t.introEnd}</span>
 						</h1>
-						<p className="intro">
-							{t.intro} <br className="mobile-break" />
-							{t.introEnd}
-						</p>
 						<div className="downloads">
 							<a
 								className="download primary"

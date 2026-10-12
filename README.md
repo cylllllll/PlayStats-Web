@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/assets/app-icon.jpg" alt="PlayStats" width="96" />
+  <img src="public/assets/brand/logo.svg" alt="PlayStats" width="96" />
   <h1>PlayStats</h1>
   <p><strong>每一场游戏，都有你的记录。</strong></p>
   <p>为 PlayStation 玩家打造的数据伴侣，回顾、整理和分享你的游戏历程。</p>
@@ -44,3 +44,14 @@ PlayStats is an independent companion app for PlayStation players. Bring your li
 PlayStats 是独立的第三方应用，与 Sony Interactive Entertainment Inc. 无官方关联。
 
 PlayStats is an independent third-party app and is not affiliated with Sony Interactive Entertainment Inc.
+
+## SEO 与分享预览
+
+默认正式地址为 `https://playstats.pages.dev`。更换域名时，在构建前设置 `NEXT_PUBLIC_SITE_URL`（参考 `.env.example`）；canonical、robots.txt、sitemap.xml、Open Graph、Twitter Card 和结构化数据会使用同一个地址。
+
+- 标题与描述在静态 HTML 中输出，语言切换后更新浏览器标题和描述。
+- 分享图片为 `public/og-image.png`，尺寸 1200 × 630；分享卡片默认使用中文描述。
+- Logo 与 favicon 使用透明矢量图，SVG favicon 自动适配浏览器的亮暗配色，并提供透明 PNG、ICO 和 Apple Touch Icon。
+- JSON-LD 包含 WebSite 与 MobileApplication 的真实应用信息；未添加未核实的评分或价格。
+
+发布后可向搜索引擎提交 `https://playstats.pages.dev/sitemap.xml`。社交平台的旧预览可能需要刷新其缓存。

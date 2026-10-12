@@ -8,9 +8,19 @@
 	"lang": "zh-CN",
 	"icons": [
 		{
-			"src": "/assets/app-icon.jpg",
-			"sizes": "886x886",
-			"type": "image/jpeg"
+			"src": "/assets/brand/icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/assets/brand/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
 		}
-	]
+	],
+	"description": "PlayStats — PlayStation 游玩统计、奖杯与 PSN 消费",
+	"id": "/",
+	"scope": "/"
 }

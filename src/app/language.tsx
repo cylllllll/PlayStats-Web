@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { site } from "@/config";
 
 export type Language = "cn" | "en";
 const LanguageContext = createContext<{
@@ -24,6 +25,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	}, []);
 	useEffect(() => {
 		document.documentElement.lang = language === "cn" ? "zh-CN" : "en";
+		document.title = site.titles[language];
+		document
+			.querySelector('meta[name="description"]')
+			?.setAttribute("content", site.descriptions[language]);
 	}, [language]);
 	function setLanguage(value: Language) {
 		updateLanguage(value);
@@ -33,19 +38,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	}
 	return (
 		<LanguageContext.Provider value={{ language, setLanguage }}>
-			<title>
-				{language === "cn"
-					? "PlayStats — 记录你的游戏历程"
-					: "PlayStats — Your gaming story, in stats"}
-			</title>
-			<meta
-				name="description"
-				content={
-					language === "cn"
-						? "为 PlayStation 玩家打造的数据伴侣。游戏库、游玩时长、奖杯进度与 PSN 消费，记录你的游戏历程。"
-						: "Your independent PlayStation companion. Explore your library, playtime, trophies and PSN spending in PlayStats."
-				}
-			/>
 			{children}
 		</LanguageContext.Provider>
 	);
