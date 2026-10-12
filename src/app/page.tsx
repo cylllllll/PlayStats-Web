@@ -10,6 +10,7 @@ import {
 } from "react-icons/fi";
 import { RiTelegram2Fill } from "react-icons/ri";
 import { site } from "@/config";
+import CoverWall from "./cover-wall";
 import IconSelect from "./icon-select";
 import { useLanguage } from "./language";
 import ThemeSwitch from "./theme-switch";
@@ -165,54 +166,57 @@ export default function HomePage() {
 			</header>
 			<main className="wrap">
 				<section className="hero" aria-labelledby="hero-title">
-					<p className="eyebrow">
-						<span />
-						{t.eyebrow}
-					</p>
-					<h1 id="hero-title">
-						{t.heading}
-						<br />
-						<em>{t.accent}</em>
-					</h1>
-					<p className="intro">
-						{t.intro} <br className="mobile-break" />
-						{t.introEnd}
-					</p>
-					<div className="downloads">
-						<a
-							className="download primary"
-							href={site.appStoreUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<FaApple aria-hidden="true" />
-							<span>
-								<small>{t.download}</small>
-								<strong>App Store</strong>
-							</span>
-							<FiArrowUpRight className="arrow" aria-hidden="true" />
-						</a>
-						<a
-							className="download secondary"
-							href={site.testFlightUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								className="store-icon"
-								src="/assets/TestFlight.png"
-								alt=""
-								width={28}
-								height={28}
-							/>
-							<span>
-								<small>{t.beta}</small>
-								<strong>{t.join}</strong>
-							</span>
-							<FiArrowUpRight className="arrow" aria-hidden="true" />
-						</a>
+					<div className="hero-copy">
+						<p className="eyebrow">
+							<span />
+							{t.eyebrow}
+						</p>
+						<h1 id="hero-title">
+							{t.heading}
+							<br />
+							<em>{t.accent}</em>
+						</h1>
+						<p className="intro">
+							{t.intro} <br className="mobile-break" />
+							{t.introEnd}
+						</p>
+						<div className="downloads">
+							<a
+								className="download primary"
+								href={site.appStoreUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FaApple aria-hidden="true" />
+								<span>
+									<small>{t.download}</small>
+									<strong>App Store</strong>
+								</span>
+								<FiArrowUpRight className="arrow" aria-hidden="true" />
+							</a>
+							<a
+								className="download secondary"
+								href={site.testFlightUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									className="store-icon"
+									src="/assets/TestFlight.png"
+									alt=""
+									width={28}
+									height={28}
+								/>
+								<span>
+									<small>{t.beta}</small>
+									<strong>{t.join}</strong>
+								</span>
+								<FiArrowUpRight className="arrow" aria-hidden="true" />
+							</a>
+						</div>
+						<p className="platforms">iPhone · iPad</p>
 					</div>
-					<p className="platforms">iPhone · iPad</p>
+					<CoverWall />
 				</section>
 				<section
 					className="showcase"
