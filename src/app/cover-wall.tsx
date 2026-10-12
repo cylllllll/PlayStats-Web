@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FiFastForward, FiPause, FiPlay } from "react-icons/fi";
 import { useLanguage } from "./language";
 
 const columns = Array.from({ length: 3 }, (_, column) =>
@@ -11,8 +10,7 @@ const columns = Array.from({ length: 3 }, (_, column) =>
 export default function CoverWall() {
 	const { language } = useLanguage();
 	const wallRef = useRef<HTMLElement>(null);
-	const motion = useRef({ position: 0, speed: 1, impulse: 0, held: false });
-	const [paused, setPaused] = useState(false);
+	const motion = useRef({ position: 0, speed: 1, impulse: 0 });
 	const [reducedMotion, setReducedMotion] = useState(false);
 
 	useEffect(() => {
@@ -25,7 +23,12 @@ export default function CoverWall() {
 
 	useEffect(() => {
 		const wall = wallRef.current;
-		if (!wall || paused || reducedMotion) return;
+		if (!wall) return;
+		if (reducedMotion) {
+			motion.current.speed = 1;
+			motion.current.impulse = 0;
+			return;
+		}
 		const tracks = [...wall.querySelectorAll<HTMLElement>(".cover-track")];
 		let frame = 0;
 		let previous = 0;
@@ -48,8 +51,8 @@ export default function CoverWall() {
 			const dt = previous ? Math.min((now - previous) / 1000, 0.05) : 0;
 			previous = now;
 			const state = motion.current;
-			state.impulse *= Math.exp(-dt * 1.8);
-			const target = state.held ? 6 : 1 + state.impulse;
+			state.impulse *= Math.exp(-dt * 1.4);
+			const target = 1 + state.impulse;
 			state.speed += (target - state.speed) * (1 - Math.exp(-dt * 7));
 			state.position += dt * 24 * state.speed;
 			tracks.forEach((track, index) => {
@@ -80,22 +83,68 @@ export default function CoverWall() {
 			lastScroll = window.scrollY;
 			if (visible) {
 				motion.current.impulse = Math.min(
-					5,
+					7,
 					motion.current.impulse + delta / 90,
 				);
 			}
 		};
+		let touch: { x: number; y: number; time: number } | null = null;
+		const onTouchStart = (event: TouchEvent) => {
+			const point = event.touches[0];
+			if (point)
+				touch = { x: point.clientX, y: point.clientY, time: performance.now() };
+		};
+		const onTouchMove = (event: TouchEvent) => {
+			const point = event.touches[0];
+			if (!point || !touch) return;
+			const now = performance.now();
+			const distance = Math.hypot(
+				point.clientX - touch.x,
+				point.clientY - touch.y,
+			);
+			const velocity = (distance / Math.max(now - touch.time, 8)) * 1000;
+			motion.current.impulse = Math.max(
+				motion.current.impulse,
+				Math.min(7, velocity / 220),
+			);
+			touch = { x: point.clientX, y: point.clientY, time: now };
+		};
+		const onTouchEnd = () => {
+			touch = null;
+		};
+		const onWheel = (event: WheelEvent) => {
+			const scale =
+				event.deltaMode === 1
+					? 16
+					: event.deltaMode === 2
+						? wall.clientHeight
+						: 1;
+			motion.current.impulse = Math.min(
+				7,
+				motion.current.impulse +
+					(Math.hypot(event.deltaX, event.deltaY) * scale) / 90,
+			);
+		};
+		wall.addEventListener("touchstart", onTouchStart, { passive: true });
+		wall.addEventListener("touchmove", onTouchMove, { passive: true });
+		wall.addEventListener("touchend", onTouchEnd, { passive: true });
+		wall.addEventListener("touchcancel", onTouchEnd, { passive: true });
+		wall.addEventListener("wheel", onWheel, { passive: true });
 		window.addEventListener("scroll", onScroll, { passive: true });
 		document.addEventListener("visibilitychange", updatePlayback);
 		return () => {
 			cancelAnimationFrame(frame);
 			observer.disconnect();
 			resize.disconnect();
-			motion.current.held = false;
+			wall.removeEventListener("touchstart", onTouchStart);
+			wall.removeEventListener("touchmove", onTouchMove);
+			wall.removeEventListener("touchend", onTouchEnd);
+			wall.removeEventListener("touchcancel", onTouchEnd);
+			wall.removeEventListener("wheel", onWheel);
 			window.removeEventListener("scroll", onScroll);
 			document.removeEventListener("visibilitychange", updatePlayback);
 		};
-	}, [paused, reducedMotion]);
+	}, [reducedMotion]);
 
 	return (
 		<section
@@ -127,58 +176,6 @@ export default function CoverWall() {
 					</div>
 				))}
 			</div>
-			{!reducedMotion && (
-				<div className="cover-controls">
-					<button
-						type="button"
-						className="cover-pause"
-						aria-label={
-							language === "cn"
-								? paused
-									? "继续滚动"
-									: "暂停滚动"
-								: paused
-									? "Resume scrolling"
-									: "Pause scrolling"
-						}
-						aria-pressed={paused}
-						onClick={() => setPaused(!paused)}
-					>
-						{paused ? (
-							<FiPlay aria-hidden="true" />
-						) : (
-							<FiPause aria-hidden="true" />
-						)}
-					</button>
-					<button
-						type="button"
-						className="cover-boost"
-						disabled={paused}
-						onPointerDown={(event) => {
-							event.currentTarget.setPointerCapture(event.pointerId);
-							motion.current.held = true;
-						}}
-						onPointerUp={() => {
-							motion.current.held = false;
-						}}
-						onPointerCancel={() => {
-							motion.current.held = false;
-						}}
-						onLostPointerCapture={() => {
-							motion.current.held = false;
-						}}
-						onBlur={() => {
-							motion.current.held = false;
-						}}
-						onClick={() => {
-							motion.current.impulse = 5;
-						}}
-					>
-						<FiFastForward aria-hidden="true" />
-						<span>{language === "cn" ? "按住加速" : "Hold to speed up"}</span>
-					</button>
-				</div>
-			)}
 		</section>
 	);
 }

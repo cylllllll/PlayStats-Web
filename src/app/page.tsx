@@ -31,8 +31,6 @@ const copy = {
 		more: "在 App 中探索更多",
 		devices: "预览设备",
 		footer: "记录热爱，继续下一场。",
-		disclaimer: "PlayStats 是独立的第三方应用，",
-		disclaimerEnd: "与 Sony Interactive Entertainment Inc. 无官方关联。",
 		preview: "查看完整截图（新标签页）",
 		insights: ["游玩统计", "游玩时长与 PSN 消费，一目了然。"],
 		trophies: ["奖杯日历", "按日期回顾奖杯记录，收藏每一次达成。"],
@@ -55,8 +53,6 @@ const copy = {
 		more: "Discover more in the app",
 		devices: "Preview device",
 		footer: "Keep the memories. Play the next game.",
-		disclaimer: "PlayStats is an independent third-party app.",
-		disclaimerEnd: "Not affiliated with Sony Interactive Entertainment Inc.",
 		preview: "View full screenshot (opens in a new tab)",
 		insights: [
 			"Playtime Stats",
@@ -311,11 +307,6 @@ export default function HomePage() {
 					<p>{t.footer}</p>
 				</div>
 				<div className="footer-right">
-					<p className="disclaimer">
-						{t.disclaimer}
-						<br />
-						{t.disclaimerEnd}
-					</p>
 					<a
 						className="icon-control"
 						href={site.telegramUrl}
