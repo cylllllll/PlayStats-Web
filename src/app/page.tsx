@@ -150,20 +150,6 @@ export default function HomePage() {
 					<a className="nav-link" href="#screenshots">
 						{t.explore} <span aria-hidden="true">↗</span>
 					</a>
-					<a
-						className="icon-control"
-						href={site.telegramUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={
-							language === "cn"
-								? "Telegram 社群（新标签页）"
-								: "Telegram community (opens in a new tab)"
-						}
-						title={language === "cn" ? "Telegram 社群" : "Telegram community"}
-					>
-						<RiTelegram2Fill aria-hidden="true" />
-					</a>
 					<IconSelect
 						label={language === "cn" ? "语言" : "Language"}
 						Icon={FiGlobe}
@@ -320,11 +306,27 @@ export default function HomePage() {
 					</a>
 					<p>{t.footer}</p>
 				</div>
-				<p className="disclaimer">
-					{t.disclaimer}
-					<br />
-					{t.disclaimerEnd}
-				</p>
+				<div className="footer-right">
+					<p className="disclaimer">
+						{t.disclaimer}
+						<br />
+						{t.disclaimerEnd}
+					</p>
+					<a
+						className="icon-control"
+						href={site.telegramUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={
+							language === "cn"
+								? "Telegram 社群（新标签页）"
+								: "Telegram community (opens in a new tab)"
+						}
+						title={language === "cn" ? "Telegram 社群" : "Telegram community"}
+					>
+						<RiTelegram2Fill aria-hidden="true" />
+					</a>
+				</div>
 			</footer>
 		</>
 	);
