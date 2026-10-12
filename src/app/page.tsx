@@ -2,8 +2,15 @@
 
 import { useRef, useState } from "react";
 import { FaApple } from "react-icons/fa";
-import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import {
+	FiArrowLeft,
+	FiArrowRight,
+	FiArrowUpRight,
+	FiGlobe,
+} from "react-icons/fi";
+import { RiTelegram2Fill } from "react-icons/ri";
 import { site } from "@/config";
+import IconSelect from "./icon-select";
 import { useLanguage } from "./language";
 import ThemeSwitch from "./theme-switch";
 
@@ -143,24 +150,30 @@ export default function HomePage() {
 					<a className="nav-link" href="#screenshots">
 						{t.explore} <span aria-hidden="true">↗</span>
 					</a>
-					<fieldset className="language-switch" aria-label="Language / 语言">
-						<button
-							type="button"
-							lang="zh-CN"
-							aria-pressed={language === "cn"}
-							onClick={() => setLanguage("cn")}
-						>
-							中文
-						</button>
-						<button
-							type="button"
-							lang="en"
-							aria-pressed={language === "en"}
-							onClick={() => setLanguage("en")}
-						>
-							EN
-						</button>
-					</fieldset>
+					<a
+						className="icon-control"
+						href={site.telegramUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={
+							language === "cn"
+								? "Telegram 社群（新标签页）"
+								: "Telegram community (opens in a new tab)"
+						}
+						title={language === "cn" ? "Telegram 社群" : "Telegram community"}
+					>
+						<RiTelegram2Fill aria-hidden="true" />
+					</a>
+					<IconSelect
+						label={language === "cn" ? "语言" : "Language"}
+						Icon={FiGlobe}
+						value={language}
+						options={[
+							{ key: "cn", label: "中文", lang: "zh-CN" },
+							{ key: "en", label: "English", lang: "en" },
+						]}
+						onChange={setLanguage}
+					/>
 					<ThemeSwitch />
 				</nav>
 			</header>

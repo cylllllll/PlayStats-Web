@@ -1,7 +1,14 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { site } from "@/config";
 import "./globals.css";
 import { LanguageProvider } from "./language";
+
+const smileySans = localFont({
+	src: "../../public/fonts/SmileySans-Oblique.woff2",
+	variable: "--font-smiley-sans",
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	applicationName: site.name,
@@ -35,7 +42,7 @@ export default function RootLayout({
 					}}
 				/>
 			</head>
-			<body>
+			<body className={smileySans.variable}>
 				<LanguageProvider>{children}</LanguageProvider>
 			</body>
 		</html>
