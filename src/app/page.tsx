@@ -169,7 +169,7 @@ export default function HomePage() {
 						</p>
 						<h1 id="hero-title">
 							{t.heading}
-							<br />
+							{language === "en" && <br />}
 							<em>{t.accent}</em>
 						</h1>
 						<p className="intro">
