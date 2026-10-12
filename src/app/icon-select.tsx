@@ -59,10 +59,14 @@ export default function IconSelect<T extends string>({
 			ref={ref}
 			name="header-settings"
 			className="icon-select"
-			onBlur={(event) => {
-				if (!event.currentTarget.contains(event.relatedTarget)) {
-					event.currentTarget.open = false;
-				}
+			onKeyDown={(event) => {
+				if (event.key !== "Tab") return;
+				requestAnimationFrame(() => {
+					const details = ref.current;
+					if (details && !details.contains(document.activeElement)) {
+						details.open = false;
+					}
+				});
 			}}
 		>
 			<summary className="icon-control" aria-label={label} title={label}>

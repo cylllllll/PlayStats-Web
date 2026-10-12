@@ -20,8 +20,6 @@ const copy = {
 		home: "PlayStats 首页",
 		explore: "探索 App",
 		eyebrow: "为 PlayStation 玩家打造",
-		heading: "每一场游戏，",
-		accent: "都有你的记录。",
 		intro: "游戏库、游玩时长、奖杯与消费。",
 		introEnd: "在 PlayStats，回顾你的游戏历程。",
 		download: "下载 iPhone 与 iPad App",
@@ -30,7 +28,7 @@ const copy = {
 		showcase: "你的游戏生活，一览无余。",
 		more: "在 App 中探索更多",
 		devices: "预览设备",
-		footer: "记录热爱，继续下一场。",
+		footer: "每一场游戏，都有你的记录。",
 		preview: "查看完整截图（新标签页）",
 		insights: ["游玩统计", "游玩时长与 PSN 消费，一目了然。"],
 		trophies: ["奖杯日历", "按日期回顾奖杯记录，收藏每一次达成。"],
@@ -42,8 +40,6 @@ const copy = {
 		home: "PlayStats home",
 		explore: "Explore the app",
 		eyebrow: "BUILT FOR PLAYSTATION PLAYERS",
-		heading: "Every game.",
-		accent: "Your story, in stats.",
 		intro: "Your library, playtime, trophies and spending.",
 		introEnd: "Rediscover your gaming journey with PlayStats.",
 		download: "Download on the",
@@ -52,7 +48,7 @@ const copy = {
 		showcase: "Your gaming life, at a glance.",
 		more: "Discover more in the app",
 		devices: "Preview device",
-		footer: "Keep the memories. Play the next game.",
+		footer: "Every game. Your story, in stats.",
 		preview: "View full screenshot (opens in a new tab)",
 		insights: [
 			"Playtime Stats",
@@ -167,10 +163,8 @@ export default function HomePage() {
 							<span />
 							{t.eyebrow}
 						</p>
-						<h1 id="hero-title">
-							{t.heading}
-							{language === "en" && <br />}
-							<em>{t.accent}</em>
+						<h1 id="hero-title" className="sr-only">
+							{site.name}
 						</h1>
 						<p className="intro">
 							{t.intro} <br className="mobile-break" />
@@ -300,13 +294,11 @@ export default function HomePage() {
 				</section>
 			</main>
 			<footer className="footer wrap">
-				<div>
-					<a className="footer-brand" href="/">
-						PlayStats
-					</a>
+				<a className="footer-brand" href="/">
+					PlayStats
+				</a>
+				<div className="footer-row">
 					<p>{t.footer}</p>
-				</div>
-				<div className="footer-right">
 					<a
 						className="icon-control"
 						href={site.telegramUrl}
