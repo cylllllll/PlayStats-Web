@@ -1,3 +1,28 @@
+# Cloudflare Workers 部署
+
+此项目使用 Next.js 静态导出，构建产物为 `out/`，不是 `.next/`。仓库中的 `wrangler.jsonc` 将 `out/` 作为 Workers 静态资源发布，无需 OpenNext 或服务器端 Worker 代码；不存在的路径使用导出的 `404.html` 返回 404。
+
+Cloudflare Workers Builds 设置：
+
+- 构建命令：`pnpm run build`
+- 部署命令：`pnpm run deploy`
+- Worker 名称：`playstats`（与 `wrangler.jsonc` 一致）
+- 如界面要求填写构建输出目录，使用 `out`。
+
+Wrangler 已作为开发依赖锁定，`pnpm-workspace.yaml` 的 `allowBuilds` 允许 `esbuild`、`workerd` 和 `sharp` 的安装脚本，避免非交互 CI 中出现 `ERR_PNPM_IGNORED_BUILDS`。不要在部署阶段自动迁移或安装依赖。
+
+本地构建与预览：
+
+```sh
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm run preview
+```
+
+已配置 Cloudflare 认证后，使用 `pnpm run deploy` 发布。仅验证配置时使用 `pnpm exec wrangler deploy --dry-run`。
+
+Workers 的默认域名与 Pages 的 `playstats.pages.dev` 不同。若正式站点地址发生变化，构建前设置 `NEXT_PUBLIC_SITE_URL` 为实际域名，确保 canonical、robots.txt、sitemap.xml 与分享信息使用正确地址。
+
 # VPS 部署准备
 
 服务器地址和 SSH 账号仅在部署时通过本地配置提供，不写入仓库。部署前确认域名、现有 Web 服务及站点目录。

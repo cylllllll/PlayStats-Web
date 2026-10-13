@@ -8,6 +8,8 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"deploy": "wrangler deploy",
+		"preview": "wrangler dev",
 		"start": "next start",
 		"lint": "biome check --write ."
 	},
@@ -25,6 +27,7 @@
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.4",
 		"postcss": "^8.5.25",
-		"typescript": "7.0.2"
+		"typescript": "7.0.2",
+		"wrangler": "4.149.0"
 	}
 }
