@@ -72,3 +72,9 @@ shasum -a 256 /tmp/playstats-web.tar.gz
 发布后可向搜索引擎提交 `https://playstats.pages.dev/sitemap.xml`。社交平台的旧预览可能需要刷新其缓存。
 
 Telegram 使用静态 HTML 内的 Open Graph 信息，不依赖 JavaScript。部署完成后可发送 `https://playstats.pages.dev/?preview=5` 测试新链接的预览；已发送的链接可能仍使用 Telegram 的缓存。若新链接也没有预览，需检查正式站点与图片是否能被公开抓取，以及 Cloudflare 的访问或机器人拦截设置。
+
+## 网站语言
+
+支持简体中文、繁體中文和 English。首次访问按浏览器语言偏好列表选择首个支持的语言：`zh-Hans`、大陆与新加坡中文使用简中；`zh-Hant`、台湾、香港与澳门中文使用繁中；无法匹配时使用英语。明确的字形偏好优先于地区。手动选择保存在 `playstats-language` 中，后续访问优先采用；自动识别结果不写入存储。
+
+静态 HTML 默认使用英语，浏览器识别后同步更新页面内容、标题、描述和 `lang`。分享卡片仍使用既有中文预览。繁中 App 截图尚未提供，因此繁中页面暂用现有简中截图。

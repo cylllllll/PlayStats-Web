@@ -12,11 +12,6 @@ const smileySans = localFont({
 
 export const metadata: Metadata = {
 	metadataBase: new URL(site.url),
-	title: {
-		default: site.titles.cn,
-		template: "%s — PlayStats",
-	},
-	description: site.descriptions.cn,
 	applicationName: site.name,
 	category: "technology",
 	keywords: [
@@ -69,7 +64,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "zh_CN",
-		alternateLocale: ["en_US"],
+		alternateLocale: ["zh_TW", "en_US"],
 		url: site.url,
 		siteName: site.name,
 		title: site.titles.cn,
@@ -107,7 +102,7 @@ const structuredData = {
 			url: `${site.url}/`,
 			name: site.name,
 			description: site.descriptions.cn,
-			inLanguage: ["zh-CN", "en"],
+			inLanguage: ["zh-CN", "zh-TW", "en"],
 		},
 		{
 			"@type": "MobileApplication",
@@ -127,7 +122,7 @@ const structuredData = {
 			downloadUrl: site.appStoreUrl,
 			installUrl: site.appStoreUrl,
 			sameAs: [site.appStoreUrl, site.telegramUrl],
-			inLanguage: ["zh-CN", "en"],
+			inLanguage: ["zh-CN", "zh-TW", "en"],
 		},
 	],
 };
@@ -142,7 +137,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="zh-CN" data-theme="dark" suppressHydrationWarning>
+		<html lang="en" data-theme="dark" suppressHydrationWarning>
 			<head>
 				<script
 					id="structured-data"

@@ -2,33 +2,34 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { site } from "@/config";
+import {
+	detectLanguage,
+	isLanguage,
+	type Language,
+	languageTags,
+} from "@/lib/languages";
 
-export type Language = "cn" | "en";
+export type { Language } from "@/lib/languages";
+
 const LanguageContext = createContext<{
 	language: Language;
 	setLanguage: (language: Language) => void;
-}>({ language: "cn", setLanguage: () => {} });
+}>({ language: "en", setLanguage: () => {} });
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-	const [language, updateLanguage] = useState<Language>("cn");
+	const [language, updateLanguage] = useState<Language>("en");
 	useEffect(() => {
 		let saved: string | null = null;
 		try {
 			saved = localStorage.getItem("playstats-language");
 		} catch {}
 		updateLanguage(
-			saved === "cn" || saved === "en"
+			isLanguage(saved)
 				? saved
-				: navigator.language.toLowerCase().startsWith("zh")
-					? "cn"
-					: "en",
+				: detectLanguage([...(navigator.languages ?? []), navigator.language]),
 		);
 	}, []);
 	useEffect(() => {
-		document.documentElement.lang = language === "cn" ? "zh-CN" : "en";
-		document.title = site.titles[language];
-		document
-			.querySelector('meta[name="description"]')
-			?.setAttribute("content", site.descriptions[language]);
+		document.documentElement.lang = languageTags[language];
 	}, [language]);
 	function setLanguage(value: Language) {
 		updateLanguage(value);
@@ -38,6 +39,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	}
 	return (
 		<LanguageContext.Provider value={{ language, setLanguage }}>
+			<title>{site.titles[language]}</title>
+			<meta name="description" content={site.descriptions[language]} />
 			{children}
 		</LanguageContext.Provider>
 	);

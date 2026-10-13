@@ -42,18 +42,28 @@ export default function ThemeSwitch() {
 			window.removeEventListener("playstats-theme-change", change);
 		};
 	}, []);
+	const labels = {
+		cn: { light: "亮色", system: "跟随系统", dark: "暗色", appearance: "外观" },
+		tw: { light: "亮色", system: "跟隨系統", dark: "暗色", appearance: "外觀" },
+		en: {
+			light: "Light",
+			system: "System",
+			dark: "Dark",
+			appearance: "Appearance",
+		},
+	}[language];
 	const choices: { key: Theme; Icon: typeof FiSun; label: string }[] = [
-		{ key: "light", Icon: FiSun, label: language === "cn" ? "亮色" : "Light" },
+		{ key: "light", Icon: FiSun, label: labels.light },
 		{
 			key: "system",
 			Icon: FiMonitor,
-			label: language === "cn" ? "跟随系统" : "System",
+			label: labels.system,
 		},
-		{ key: "dark", Icon: FiMoon, label: language === "cn" ? "暗色" : "Dark" },
+		{ key: "dark", Icon: FiMoon, label: labels.dark },
 	];
 	return (
 		<IconSelect
-			label={language === "cn" ? "外观" : "Appearance"}
+			label={labels.appearance}
 			Icon={choices.find((choice) => choice.key === theme)?.Icon ?? FiMonitor}
 			value={theme}
 			options={choices}

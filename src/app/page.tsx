@@ -19,6 +19,13 @@ import ThemeSwitch from "./theme-switch";
 const copy = {
 	cn: {
 		home: "PlayStats 首页",
+		navigation: "导航与语言",
+		language: "语言",
+		swipe: "左右滑动查看更多",
+		previous: "上一张截图",
+		next: "下一张截图",
+		telegram: "Telegram 社群",
+		telegramLink: "Telegram 社群（新标签页）",
 		explore: "探索 App",
 		eyebrow: "为 PlayStation 玩家打造",
 		intro: ["游戏库、", "游玩时长", "、奖杯与消费。"],
@@ -37,8 +44,42 @@ const copy = {
 		share: ["分享卡片", "把游玩时长与奖杯进度，变成值得分享的卡片。"],
 		details: ["游戏详情", "查看单款游戏的游玩时长与奖杯进度。"],
 	},
+	tw: {
+		home: "PlayStats 首頁",
+		explore: "探索 App",
+		eyebrow: "為 PlayStation 玩家打造",
+		intro: ["遊戲庫、", "遊玩時長", "、獎盃與消費。"],
+		introEnd: ["在 PlayStats，回顧你的", "遊戲歷程", "。"],
+		download: "下載 iPhone 與 iPad App",
+		beta: "搶先體驗新功能",
+		join: "加入 TestFlight",
+		showcase: "你的遊戲生活，一覽無遺。",
+		more: "在 App 中探索更多",
+		devices: "預覽裝置",
+		footer: "每一場遊戲，都有你的記錄。",
+		preview: "查看完整截圖（新分頁）",
+		insights: ["遊玩統計", "遊玩時長與 PSN 消費，一目了然。"],
+		trophies: ["獎盃日曆", "按日期回顧獎盃記錄，收藏每一次達成。"],
+		live: ["即時動態", "在鎖定畫面和動態島，查看正在遊玩的遊戲。"],
+		share: ["分享卡片", "把遊玩時長與獎盃進度，變成值得分享的卡片。"],
+		details: ["遊戲詳情", "查看單款遊戲的遊玩時長與獎盃進度。"],
+		navigation: "導覽與語言",
+		language: "語言",
+		swipe: "左右滑動查看更多",
+		previous: "上一張截圖",
+		next: "下一張截圖",
+		telegram: "Telegram 社群",
+		telegramLink: "Telegram 社群（新分頁）",
+	},
 	en: {
 		home: "PlayStats home",
+		navigation: "Navigation and language",
+		language: "Language",
+		swipe: "Swipe to explore",
+		previous: "Previous screenshot",
+		next: "Next screenshot",
+		telegram: "Telegram community",
+		telegramLink: "Telegram community (opens in a new tab)",
 		explore: "Explore the app",
 		eyebrow: "BUILT FOR PLAYSTATION PLAYERS",
 		intro: ["Your library, ", "playtime", ", trophies and spending."],
@@ -111,10 +152,12 @@ export default function HomePage() {
 					{ file: "02-game-details.jpg", text: t.details },
 					{ file: "03-share.jpg", text: t.share },
 				];
+	// Traditional Chinese screenshots are not available yet; use the Chinese assets.
+	const screenshotLanguage = language === "en" ? "en" : "cn";
 	const directory =
 		device === "iphone"
 			? `/assets/screenshots/${language === "en" ? "en/" : ""}`
-			: `/assets/screenshots/${device}/${language}/`;
+			: `/assets/screenshots/${device}/${screenshotLanguage}/`;
 	const dimensions = device === "iphone" ? [1284, 2778] : [2048, 2732];
 	return (
 		<>
@@ -123,21 +166,17 @@ export default function HomePage() {
 					<BrandMark />
 					PlayStats
 				</a>
-				<nav
-					className="header-actions"
-					aria-label={
-						language === "cn" ? "导航与语言" : "Navigation and language"
-					}
-				>
+				<nav className="header-actions" aria-label={t.navigation}>
 					<a className="nav-link" href="#screenshots">
 						{t.explore} <span aria-hidden="true">↗</span>
 					</a>
 					<IconSelect
-						label={language === "cn" ? "语言" : "Language"}
+						label={t.language}
 						Icon={FiGlobe}
 						value={language}
 						options={[
-							{ key: "cn", label: "中文", lang: "zh-CN" },
+							{ key: "cn", label: "简体中文", lang: "zh-CN" },
+							{ key: "tw", label: "繁體中文", lang: "zh-TW" },
 							{ key: "en", label: "English", lang: "en" },
 						]}
 						onChange={setLanguage}
@@ -224,15 +263,11 @@ export default function HomePage() {
 							))}
 						</fieldset>
 						<div className="gallery-controls">
-							<span>
-								{language === "cn" ? "左右滑动查看更多" : "Swipe to explore"}
-							</span>
+							<span>{t.swipe}</span>
 							<button
 								type="button"
 								onClick={() => scrollGallery(-1)}
-								aria-label={
-									language === "cn" ? "上一张截图" : "Previous screenshot"
-								}
+								aria-label={t.previous}
 								aria-controls="device-previews"
 							>
 								<FiArrowLeft aria-hidden="true" />
@@ -240,9 +275,7 @@ export default function HomePage() {
 							<button
 								type="button"
 								onClick={() => scrollGallery(1)}
-								aria-label={
-									language === "cn" ? "下一张截图" : "Next screenshot"
-								}
+								aria-label={t.next}
 								aria-controls="device-previews"
 							>
 								<FiArrowRight aria-hidden="true" />
@@ -296,12 +329,8 @@ export default function HomePage() {
 						href={site.telegramUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label={
-							language === "cn"
-								? "Telegram 社群（新标签页）"
-								: "Telegram community (opens in a new tab)"
-						}
-						title={language === "cn" ? "Telegram 社群" : "Telegram community"}
+						aria-label={t.telegramLink}
+						title={t.telegram}
 					>
 						<RiTelegram2Fill aria-hidden="true" />
 					</a>
