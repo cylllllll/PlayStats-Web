@@ -234,7 +234,7 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 
 /* Badge-inspired layout: icon at left, small caption above the product name. */
 .hero-copy .downloads { width: 100%; max-width: 412px; gap: 12px; }
-.hero-copy .download { flex: 1 1 0; max-width: none; min-height: 64px; justify-content: center; gap: 11px; padding: 10px 14px; border-radius: 14px; }
+.hero-copy .download { flex: 1 1 0; max-width: none; min-height: 64px; justify-content: flex-start; gap: 11px; padding: 10px 14px; border-radius: 14px; }
 .hero-copy .download > svg, .hero-copy .download .store-icon { width: 32px; height: 32px; }
 .hero-copy .download > span { min-width: 0; }
 .hero-copy .download small { font-size: 11px; line-height: 1.2; margin-bottom: 3px; white-space: nowrap; }
