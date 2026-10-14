@@ -65,16 +65,16 @@ shasum -a 256 /tmp/playstats-web.tar.gz
 默认正式地址为 `https://playstats.pages.dev`。更换域名时，在构建前设置 `NEXT_PUBLIC_SITE_URL`（参考 `.env.example`）；canonical、robots.txt、sitemap.xml、Open Graph、Twitter Card 和结构化数据会使用同一个地址。
 
 - 标题与描述在静态 HTML 中输出，语言切换后更新浏览器标题和描述。
-- 分享图片为 `public/og-image-v5.jpg`（轻量 JPG，旧 PNG 地址仍保留），尺寸 1200 × 630；分享卡片默认使用中文描述。
+- 分享图片为 `public/og-image-v6.jpg`（轻量 JPG，旧 PNG 地址仍保留），尺寸 1200 × 630；分享卡片默认使用中文描述。
 - Logo 与 favicon 使用透明矢量图，SVG favicon 自动适配浏览器的亮暗配色，并提供透明 PNG、ICO 和 Apple Touch Icon。
 - JSON-LD 包含 WebSite 与 MobileApplication 的真实应用信息；未添加未核实的评分或价格。
 
 发布后可向搜索引擎提交 `https://playstats.pages.dev/sitemap.xml`。社交平台的旧预览可能需要刷新其缓存。
 
-Telegram 使用静态 HTML 内的 Open Graph 信息，不依赖 JavaScript。部署完成后可发送 `https://playstats.pages.dev/?preview=5` 测试新链接的预览；已发送的链接可能仍使用 Telegram 的缓存。若新链接也没有预览，需检查正式站点与图片是否能被公开抓取，以及 Cloudflare 的访问或机器人拦截设置。
+Telegram 使用静态 HTML 内的 Open Graph 信息，不依赖 JavaScript。部署完成后可发送 `https://playstats.pages.dev/?preview=6` 测试新链接的预览；已发送的链接可能仍使用 Telegram 的缓存。若新链接也没有预览，需检查正式站点与图片是否能被公开抓取，以及 Cloudflare 的访问或机器人拦截设置。
 
 ## 网站语言
 
-支持简体中文和 English。首次访问按浏览器语言偏好列表选择首个支持的语言：仅简体中文偏好（如 `zh-Hans`、`zh-CN`、`zh-SG`）使用简中；繁体中文偏好（如 `zh-Hant`、`zh-TW`、`zh-HK`、`zh-MO`）及无法匹配的语言使用英语。明确的字形偏好优先于地区。手动选择保存在 `playstats-language` 中，后续访问优先采用；自动识别结果不写入存储。之前保存的繁中选择会自动转为英语。
+支持简体中文、繁體中文和 English。首次访问按浏览器语言偏好列表选择首个支持的语言：`zh-Hans`、大陆与新加坡中文使用简中；`zh-Hant`、台湾、香港与澳门中文使用繁中；无法匹配时使用英语。明确的字形偏好优先于地区。手动选择保存在 `playstats-language` 中，后续访问优先采用；自动识别结果不写入存储。
 
-静态 HTML 默认使用英语，浏览器识别后同步更新页面内容、标题、描述和 `lang`。分享卡片仍使用既有中文预览。
+静态 HTML 默认使用英语，浏览器识别后同步更新页面内容、标题、描述和 `lang`。分享卡片仍使用既有中文预览。繁中页面的 iPhone 与 iPad 预览均使用英语版 App 截图，文案仍使用繁中。繁中使用本地加载的霞鹜文楷 TC 字体子集，简中和英语使用得意黑；字体来源、许可和子集更新方式见 `public/fonts/README.md`。

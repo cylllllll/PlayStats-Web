@@ -1,9 +1,10 @@
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-:root { color-scheme: dark; --background: #101113; --text: #f5f5f2; --muted: #92938e; --accent: #f5dc42; --accent-text: #f5dc42; --line: #ffffff12; --border: #ffffff24; --surface: #1b1c1e; --control: #191a1c; --body-text: #a7a8a2; --nav-text: #c0c1bb; --eyebrow: #c3c4bc; --subtle: #92938e; }
+:root { color-scheme: dark; --background: #101113; --text: #f5f5f2; --muted: #92938e; --accent: #FFD60A; --accent-text: #FFD60A; --line: #ffffff12; --border: #ffffff24; --surface: #1b1c1e; --control: #191a1c; --body-text: #a7a8a2; --nav-text: #c0c1bb; --eyebrow: #c3c4bc; --subtle: #92938e; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 30px; }
 body { margin: 0; background: var(--background); color: var(--text); font-family: var(--font-smiley-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
+:root[lang="zh-TW"] body, .select-option[lang="zh-TW"] { font-family: var(--font-wenkai-tc), "PingFang TC", "Microsoft JhengHei", sans-serif; }
 a { color: inherit; text-decoration: none; }
 a:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
 .wrap { max-width: 1280px; width: calc(100% - 96px); margin-inline: auto; }
@@ -38,7 +39,7 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 
 @media (max-width: 520px) { .header-actions { gap: 10px; }.header-actions .nav-link { display: none; }.app-icon { width: 34px; height: 34px; }html[lang="en"] h1 { font-size: clamp(29px, 8.5vw, 42px); letter-spacing: -1.5px; } }
 
-:root[data-theme="light"] { color-scheme: light; --background: #fafaf7; --text: #20211b; --muted: #66685d; --accent-text: #786300; --line: #20211b18; --border: #20211b26; --surface: #ffffff; --control: #f0f0e9; --body-text: #606257; --nav-text: #53554b; --eyebrow: #626450; --subtle: #6b6d61; }
+:root[data-theme="light"] { color-scheme: light; --accent: #FFCC00; --background: #fafaf7; --text: #20211b; --muted: #66685d; --accent-text: #786300; --line: #20211b18; --border: #20211b26; --surface: #ffffff; --control: #f0f0e9; --body-text: #606257; --nav-text: #53554b; --eyebrow: #626450; --subtle: #6b6d61; }
 @media (max-width: 600px) { .header-actions { gap: 8px; }.header-actions .nav-link { display: none; } }
 @media (max-width: 380px) { .wordmark { font-size: 17px; gap: 6px; }.app-icon { width: 29px; height: 29px; }.header-actions { gap: 5px; } }
 

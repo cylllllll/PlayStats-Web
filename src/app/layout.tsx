@@ -10,6 +10,13 @@ const smileySans = localFont({
 	display: "swap",
 });
 
+const wenkaiTC = localFont({
+	src: "../../public/fonts/PlayStatsTC-Regular.woff2",
+	variable: "--font-wenkai-tc",
+	display: "swap",
+	preload: false,
+});
+
 export const metadata: Metadata = {
 	metadataBase: new URL(site.url),
 	applicationName: site.name,
@@ -64,15 +71,15 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "zh_CN",
-		alternateLocale: ["en_US"],
+		alternateLocale: ["zh_TW", "en_US"],
 		url: site.url,
 		siteName: site.name,
 		title: site.titles.cn,
 		description: site.descriptions.cn,
 		images: [
 			{
-				url: "/og-image-v5.jpg",
-				secureUrl: `${site.url}/og-image-v5.jpg`,
+				url: "/og-image-v6.jpg",
+				secureUrl: `${site.url}/og-image-v6.jpg`,
 				type: "image/jpeg",
 				width: 1200,
 				height: 630,
@@ -86,7 +93,7 @@ export const metadata: Metadata = {
 		description: site.descriptions.cn,
 		images: [
 			{
-				url: "/og-image-v5.jpg",
+				url: "/og-image-v6.jpg",
 				alt: "PlayStats — 游戏库、游玩时长、奖杯与消费",
 			},
 		],
@@ -102,7 +109,7 @@ const structuredData = {
 			url: `${site.url}/`,
 			name: site.name,
 			description: site.descriptions.cn,
-			inLanguage: ["zh-CN", "en"],
+			inLanguage: ["zh-CN", "zh-TW", "en"],
 		},
 		{
 			"@type": "MobileApplication",
@@ -122,7 +129,7 @@ const structuredData = {
 			downloadUrl: site.appStoreUrl,
 			installUrl: site.appStoreUrl,
 			sameAs: [site.appStoreUrl, site.telegramUrl],
-			inLanguage: ["zh-CN", "en"],
+			inLanguage: ["zh-CN", "zh-TW", "en"],
 		},
 	],
 };
@@ -152,7 +159,7 @@ export default function RootLayout({
 					}}
 				/>
 			</head>
-			<body className={smileySans.variable}>
+			<body className={`${smileySans.variable} ${wenkaiTC.variable}`}>
 				<LanguageProvider>{children}</LanguageProvider>
 			</body>
 		</html>
