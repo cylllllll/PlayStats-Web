@@ -162,9 +162,7 @@ export default function CoverWall() {
 		<section
 			ref={wallRef}
 			className="cover-wall"
-			aria-label={
-				{ cn: "游戏封面墙", tw: "遊戲封面牆", en: "Game cover wall" }[language]
-			}
+			aria-label={{ cn: "游戏封面墙", en: "Game cover wall" }[language]}
 		>
 			<div className="cover-stage" aria-hidden="true">
 				{columns.map((covers, column) => (

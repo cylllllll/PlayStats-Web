@@ -21,6 +21,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 		let saved: string | null = null;
 		try {
 			saved = localStorage.getItem("playstats-language");
+			if (saved === "tw") {
+				saved = "en";
+				localStorage.setItem("playstats-language", saved);
+			}
 		} catch {}
 		updateLanguage(
 			isLanguage(saved)

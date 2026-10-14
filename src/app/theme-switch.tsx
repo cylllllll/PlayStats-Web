@@ -44,7 +44,6 @@ export default function ThemeSwitch() {
 	}, []);
 	const labels = {
 		cn: { light: "亮色", system: "跟随系统", dark: "暗色", appearance: "外观" },
-		tw: { light: "亮色", system: "跟隨系統", dark: "暗色", appearance: "外觀" },
 		en: {
 			light: "Light",
 			system: "System",

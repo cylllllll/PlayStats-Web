@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "zh_CN",
-		alternateLocale: ["zh_TW", "en_US"],
+		alternateLocale: ["en_US"],
 		url: site.url,
 		siteName: site.name,
 		title: site.titles.cn,
@@ -102,7 +102,7 @@ const structuredData = {
 			url: `${site.url}/`,
 			name: site.name,
 			description: site.descriptions.cn,
-			inLanguage: ["zh-CN", "zh-TW", "en"],
+			inLanguage: ["zh-CN", "en"],
 		},
 		{
 			"@type": "MobileApplication",
@@ -122,7 +122,7 @@ const structuredData = {
 			downloadUrl: site.appStoreUrl,
 			installUrl: site.appStoreUrl,
 			sameAs: [site.appStoreUrl, site.telegramUrl],
-			inLanguage: ["zh-CN", "zh-TW", "en"],
+			inLanguage: ["zh-CN", "en"],
 		},
 	],
 };

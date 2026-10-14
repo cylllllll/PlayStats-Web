@@ -5,12 +5,10 @@ export const site = {
 	).replace(/\/+$/, ""),
 	titles: {
 		cn: "PlayStats — PlayStation 游玩统计、奖杯与 PSN 消费",
-		tw: "PlayStats — PlayStation 遊玩統計、獎盃與 PSN 消費",
 		en: "PlayStats — PlayStation Stats, Trophies & PSN Spending",
 	},
 	descriptions: {
 		cn: "PlayStats 是为 PlayStation 玩家打造的 iPhone 与 iPad 数据伴侣。查看游戏库、游玩时长、奖杯日历和 PSN 消费，使用实时活动、小组件与分享卡片，回顾你的游戏历程。",
-		tw: "PlayStats 是為 PlayStation 玩家打造的 iPhone 與 iPad 數據伴侶。查看遊戲庫、遊玩時長、獎盃日曆和 PSN 消費，使用即時動態、小工具與分享卡片，回顧你的遊戲歷程。",
 		en: "Your PlayStation companion for iPhone and iPad. Explore your library, playtime, trophies and PSN spending with Live Activities, widgets and share cards.",
 	},
 	telegramUrl: "https://t.me/PlayStatsApp",
