@@ -1,13 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FaApple } from "react-icons/fa";
-import {
-	FiArrowLeft,
-	FiArrowRight,
-	FiArrowUpRight,
-	FiGlobe,
-} from "react-icons/fi";
+import { FiArrowUpRight, FiGlobe } from "react-icons/fi";
 import { RiTelegram2Fill } from "react-icons/ri";
 import BrandMark from "@/components/BrandMark";
 import { site } from "@/config";
@@ -22,8 +17,6 @@ const copy = {
 		navigation: "导航与语言",
 		language: "语言",
 		swipe: "左右滑动查看更多",
-		previous: "上一张截图",
-		next: "下一张截图",
 		telegram: "Telegram 社群",
 		telegramLink: "Telegram 社群（新标签页）",
 		explore: "探索 App",
@@ -66,8 +59,6 @@ const copy = {
 		navigation: "導覽與語言",
 		language: "語言",
 		swipe: "左右滑動查看更多",
-		previous: "上一張截圖",
-		next: "下一張截圖",
 		telegram: "Telegram 社群",
 		telegramLink: "Telegram 社群（新分頁）",
 	},
@@ -76,8 +67,6 @@ const copy = {
 		navigation: "Navigation and language",
 		language: "Language",
 		swipe: "Swipe to explore",
-		previous: "Previous screenshot",
-		next: "Next screenshot",
 		telegram: "Telegram community",
 		telegramLink: "Telegram community (opens in a new tab)",
 		explore: "Explore the app",
@@ -123,21 +112,6 @@ const devices: { id: Device; label: string }[] = [
 export default function HomePage() {
 	const { language, setLanguage } = useLanguage();
 	const [device, setDevice] = useState<Device>("iphone");
-	const galleryRef = useRef<HTMLElement>(null);
-	function scrollGallery(direction: number) {
-		const gallery = galleryRef.current;
-		if (!gallery) return;
-		const card = gallery.querySelector("figure");
-		const step =
-			(card?.getBoundingClientRect().width ?? gallery.clientWidth) +
-			(parseFloat(getComputedStyle(gallery).columnGap) || 0);
-		gallery.scrollBy({
-			left: direction * step,
-			behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-				? "instant"
-				: "smooth",
-		});
-	}
 	const t = copy[language];
 	const shots =
 		device === "iphone"
@@ -262,29 +236,10 @@ export default function HomePage() {
 								</button>
 							))}
 						</fieldset>
-						<div className="gallery-controls">
-							<span>{t.swipe}</span>
-							<button
-								type="button"
-								onClick={() => scrollGallery(-1)}
-								aria-label={t.previous}
-								aria-controls="device-previews"
-							>
-								<FiArrowLeft aria-hidden="true" />
-							</button>
-							<button
-								type="button"
-								onClick={() => scrollGallery(1)}
-								aria-label={t.next}
-								aria-controls="device-previews"
-							>
-								<FiArrowRight aria-hidden="true" />
-							</button>
-						</div>
+						<span className="gallery-hint">{t.swipe}</span>
 					</div>
 					<section
 						className={`screenshots screenshots-${device}`}
-						ref={galleryRef}
 						key={`${device}-${language}`}
 						id="device-previews"
 						aria-label={`${devices.find((item) => item.id === device)?.label} ${t.devices}`}

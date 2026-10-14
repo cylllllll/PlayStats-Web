@@ -50,12 +50,12 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 .screenshots:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
 .gallery-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
 .gallery-toolbar .device-switch { margin: 0; }
-.gallery-controls { display: flex; align-items: center; gap: 8px; }
-.gallery-controls span { font-size: 11px; color: var(--muted); margin-right: 8px; }
-.gallery-controls button { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--text); cursor: pointer; }
-.gallery-controls button:hover { background: var(--control); }
-@media (max-width: 600px) { .gallery-toolbar { flex-wrap: wrap; gap: 12px; }.gallery-controls { margin-left: auto; }.gallery-controls span { display: none; } }
-@media (max-width: 520px) { .screenshots > figure { flex-basis: 78%; }.screenshots-ipad > figure { flex-basis: 86%; }.screenshot-link:hover { transform: none; }.gallery-toolbar .device-switch button { min-width: 0; padding-inline: 12px; }.gallery-controls button { width: 30px; height: 30px; } }
+
+.gallery-hint { font-size: 11px; color: var(--muted); }
+
+
+@media (max-width: 600px) { .gallery-toolbar { flex-wrap: wrap; gap: 12px; }.gallery-hint { display: none; } }
+@media (max-width: 520px) { .screenshots > figure { flex-basis: 78%; }.screenshots-ipad > figure { flex-basis: 86%; }.screenshot-link:hover { transform: none; }.gallery-toolbar .device-switch button { min-width: 0; padding-inline: 12px; } }
 
 .icon-select { position: relative; }
 .icon-control { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--control); color: var(--nav-text); cursor: pointer; list-style: none; transition: background .15s, color .15s; }
@@ -139,42 +139,32 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 .hero-description em { font-style: normal; font-weight: inherit; color: color-mix(in srgb, var(--accent-text) 62%, var(--body-text)); }
 .hero-description > span em { color: color-mix(in srgb, var(--accent-text) 45%, var(--muted)); }
 
-/* Glass controls: a translucent material with a reflective edge and tint. */
+/* Frosted controls: diffuse translucency, flat tints and soft shadows. */
 :root {
  --glass-solid: #26282c;
- --glass-fill: #24262c99;
- --glass-sheen: #ffffff1f;
- --glass-edge: #ffffff30;
- --glass-shadow: #00000038;
+ --glass-fill: #24262cb3;
+ --glass-edge: #ffffff1c;
+ --glass-shadow: #00000024;
 }
 :root[data-theme="light"] {
  --glass-solid: #f0f0eb;
- --glass-fill: #ffffff80;
- --glass-sheen: #ffffffb8;
- --glass-edge: #ffffffd9;
- --glass-shadow: #30352214;
+ --glass-fill: #ffffffb3;
+ --glass-edge: #20211b14;
+ --glass-shadow: #3035220d;
 }
-.download, .download.secondary, .device-switch, .icon-control, .gallery-controls button, .select-popup {
+.download, .download.secondary, .device-switch, .icon-control, .select-popup {
  position: relative;
  isolation: isolate;
  background: var(--glass-solid);
- background-image: linear-gradient(145deg, var(--glass-sheen), transparent 48%);
+ background-image: none;
  border: 1px solid var(--glass-edge);
- box-shadow: inset 0 1px 0 #ffffff24, inset 0 -1px 0 #0000000a, 0 6px 20px var(--glass-shadow);
-}
-.download::before, .device-switch::before, .icon-control::before, .gallery-controls button::before, .select-popup::before {
- content: "";
- position: absolute;
- inset: 0;
- border-radius: inherit;
- pointer-events: none;
- background: linear-gradient(125deg, #ffffff30, transparent 28%, transparent 72%, #ffffff0a);
+ box-shadow: 0 4px 16px var(--glass-shadow);
 }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
- .download, .download.secondary, .device-switch, .icon-control, .gallery-controls button, .select-popup {
+ .download, .download.secondary, .device-switch, .icon-control, .select-popup {
   background-color: var(--glass-fill);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  backdrop-filter: blur(16px) saturate(110%);
  }
 }
 .hero-copy .download {
@@ -184,16 +174,16 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 }
 .download.primary {
  background-color: var(--accent);
- background-image: linear-gradient(145deg, #ffffff52, transparent 52%, #ffffff12);
- border-color: color-mix(in srgb, var(--accent) 65%, white);
- box-shadow: inset 0 1px 0 #ffffff85, inset 0 -1px 0 #b189001c, 0 6px 18px color-mix(in srgb, var(--accent) 12%, transparent);
+ background-image: none;
+ border-color: color-mix(in srgb, var(--accent) 90%, #18190f);
+ box-shadow: 0 4px 14px var(--glass-shadow);
  color: #18190f;
 }
 .download.secondary { color: var(--text); }
-.gallery-controls button { width: 40px; height: 40px; }
-.icon-control, .gallery-controls button { border-radius: 50%; touch-action: manipulation; transition: transform .2s, box-shadow .2s, color .2s; }
-.icon-control:hover, .icon-select[open] > .icon-control, .gallery-controls button:hover { background-color: var(--glass-solid); color: var(--text); }
-.select-popup { position: absolute; border-radius: 20px; box-shadow: inset 0 1px 0 #ffffff38, 0 12px 36px var(--glass-shadow); }
+
+.icon-control { border-radius: 50%; touch-action: manipulation; transition: transform .2s, box-shadow .2s, color .2s; }
+.icon-control:hover, .icon-select[open] > .icon-control { background-color: var(--glass-solid); color: var(--text); }
+.select-popup { position: absolute; border-radius: 20px; box-shadow: 0 10px 28px var(--glass-shadow); }
 .select-option { position: relative; border-radius: 11px; }
 .select-option[aria-pressed="true"] { background: color-mix(in srgb, var(--accent) 12%, transparent); }
 .device-switch { border-radius: 999px; overflow: hidden; }
@@ -205,10 +195,10 @@ html[lang="en"] h1 { letter-spacing: -2px; }
  bottom: 4px;
  left: 4px;
  width: calc((100% - 12px) / 2);
- border: 1px solid #ffffff66;
+ border: 1px solid transparent;
  border-radius: 999px;
- background: linear-gradient(145deg, #ffffff4a, transparent 65%), var(--accent);
- box-shadow: inset 0 1px 0 #ffffff55, 0 2px 7px #00000012;
+ background: var(--accent);
+ box-shadow: 0 1px 4px var(--glass-shadow);
  transition: transform .3s cubic-bezier(.2,.8,.2,1), background-color .2s;
  pointer-events: none;
 }
@@ -217,22 +207,22 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 .device-switch button[aria-pressed="true"] { background: transparent; color: #18190f; }
 .device-switch button:focus-visible { outline-offset: -3px; }
 @media (hover: hover) and (pointer: fine) {
- a.download:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 #ffffff50, 0 10px 26px var(--glass-shadow); }
- .icon-control:hover, .gallery-controls button:hover { transform: translateY(-1px); }
+ a.download:hover { transform: translateY(-2px); box-shadow: 0 7px 20px var(--glass-shadow); }
+ .icon-control:hover { transform: translateY(-1px); }
 }
-.hero-copy .download:active, .icon-control:active, .gallery-controls button:active { transform: scale(.96); }
+.hero-copy .download:active, .icon-control:active { transform: scale(.96); }
 .device-switch button:active { transform: scale(.96); }
 @media (max-width: 600px) {
- .gallery-controls button { width: 44px; height: 44px; }
+
  .hero-copy .download { border-radius: 20px; }
- .download, .download.secondary, .device-switch, .icon-control, .gallery-controls button, .select-popup { -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%); }
+ .download, .download.secondary, .device-switch, .icon-control, .select-popup { -webkit-backdrop-filter: blur(12px) saturate(110%); backdrop-filter: blur(12px) saturate(110%); }
 }
 @media (prefers-reduced-motion: reduce) {
- .hero-copy .download, .icon-control, .gallery-controls button, .device-switch button, .device-switch::after { transition: none; }
- .hero-copy .download:hover, .hero-copy .download:active, .icon-control:hover, .icon-control:active, .gallery-controls button:hover, .gallery-controls button:active, .device-switch button:active { transform: none; }
+ .hero-copy .download, .icon-control, .device-switch button, .device-switch::after { transition: none; }
+ .hero-copy .download:hover, .hero-copy .download:active, .icon-control:hover, .icon-control:active, .device-switch button:active { transform: none; }
 }
 @media (prefers-reduced-transparency: reduce) {
- .download, .download.secondary, .device-switch, .icon-control, .gallery-controls button, .select-popup { background-color: var(--glass-solid); -webkit-backdrop-filter: none; backdrop-filter: none; }
+ .download, .download.secondary, .device-switch, .icon-control, .select-popup { background-color: var(--glass-solid); -webkit-backdrop-filter: none; backdrop-filter: none; }
  .download.primary { background-color: var(--accent); }
 }
 
@@ -241,3 +231,8 @@ html[lang="en"] h1 { letter-spacing: -2px; }
  .device-switch::after { display: none; }
  .device-switch button[aria-pressed="true"] { background: var(--accent); }
 }
+
+/* Compact download links keep their natural width within one responsive row. */
+.hero-copy .downloads { width: fit-content; max-width: 100%; }
+.hero-copy .download { flex: 0 1 auto; max-width: none; }
+.hero-copy .download > span { min-width: 0; }
