@@ -232,13 +232,24 @@ html[lang="en"] h1 { letter-spacing: -2px; }
  .device-switch button[aria-pressed="true"] { background: var(--accent); }
 }
 
-/* Balanced download actions share a comfortable size and alignment. */
+/* Badge-inspired layout: icon at left, small caption above the product name. */
 .hero-copy .downloads { width: 100%; max-width: 412px; gap: 12px; }
-.hero-copy .download { flex: 1 1 0; max-width: none; min-height: 64px; justify-content: center; padding-inline: 14px; }
+.hero-copy .download { flex: 1 1 0; max-width: none; min-height: 64px; justify-content: center; gap: 11px; padding: 10px 14px; border-radius: 14px; }
+.hero-copy .download > svg, .hero-copy .download .store-icon { width: 32px; height: 32px; }
 .hero-copy .download > span { min-width: 0; }
-.hero-copy .download strong { white-space: nowrap; }
+.hero-copy .download small { font-size: 11px; line-height: 1.2; margin-bottom: 3px; white-space: nowrap; }
+.hero-copy .download strong { font-size: 23px; font-weight: 650; line-height: 1.05; white-space: nowrap; }
 .hero-copy .download .arrow { display: none; }
 @media (max-width: 600px) {
- .hero-copy .download { min-height: 60px; padding-inline: 10px; }
+ .hero-copy .download { min-height: 60px; gap: 9px; padding: 10px 12px; border-radius: 12px; }
+ .hero-copy .download > svg, .hero-copy .download .store-icon { width: 29px; height: 29px; }
+ .hero-copy .download small { font-size: 10px; }
+ .hero-copy .download strong { font-size: 20px; }
 }
-@media (max-width: 360px) { .hero-copy .downloads { gap: 8px; } }
+@media (max-width: 360px) {
+ .hero-copy .downloads { gap: 8px; }
+ .hero-copy .download { gap: 7px; padding-inline: 9px; }
+ .hero-copy .download > svg, .hero-copy .download .store-icon { width: 26px; height: 26px; }
+ .hero-copy .download small { font-size: 9px; }
+ .hero-copy .download strong { font-size: 18px; }
+}
