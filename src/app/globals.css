@@ -232,7 +232,13 @@ html[lang="en"] h1 { letter-spacing: -2px; }
  .device-switch button[aria-pressed="true"] { background: var(--accent); }
 }
 
-/* Compact download links keep their natural width within one responsive row. */
-.hero-copy .downloads { width: fit-content; max-width: 100%; }
-.hero-copy .download { flex: 0 1 auto; max-width: none; }
+/* Balanced download actions share a comfortable size and alignment. */
+.hero-copy .downloads { width: 100%; max-width: 412px; gap: 12px; }
+.hero-copy .download { flex: 1 1 0; max-width: none; min-height: 64px; justify-content: center; padding-inline: 14px; }
 .hero-copy .download > span { min-width: 0; }
+.hero-copy .download strong { white-space: nowrap; }
+.hero-copy .download .arrow { display: none; }
+@media (max-width: 600px) {
+ .hero-copy .download { min-height: 60px; padding-inline: 10px; }
+}
+@media (max-width: 360px) { .hero-copy .downloads { gap: 8px; } }
