@@ -19,6 +19,8 @@ const copy = {
 		swipe: "左右滑动查看更多",
 		telegram: "Telegram 社群",
 		telegramLink: "Telegram 社群（新标签页）",
+		privacy: "隐私政策",
+		privacyLink: "隐私政策（新标签页）",
 		explore: "探索 App",
 		eyebrow: "为 PlayStation 玩家打造",
 		intro: ["游戏库、", "游玩时长", "、奖杯与消费。"],
@@ -61,6 +63,8 @@ const copy = {
 		swipe: "左右滑動查看更多",
 		telegram: "Telegram 社群",
 		telegramLink: "Telegram 社群（新分頁）",
+		privacy: "隱私政策",
+		privacyLink: "隱私政策（新分頁）",
 	},
 	en: {
 		home: "PlayStats home",
@@ -69,6 +73,8 @@ const copy = {
 		swipe: "Swipe to explore",
 		telegram: "Telegram community",
 		telegramLink: "Telegram community (opens in a new tab)",
+		privacy: "Privacy Policy",
+		privacyLink: "Privacy Policy (opens in a new tab)",
 		explore: "Explore the app",
 		eyebrow: "BUILT FOR PLAYSTATION PLAYERS",
 		intro: ["Your library, ", "playtime", ", trophies and spending."],
@@ -288,6 +294,16 @@ export default function HomePage() {
 						title={t.telegram}
 					>
 						<RiTelegram2Fill aria-hidden="true" />
+					</a>
+				</div>
+				<div className="footer-legal">
+					<a
+						href={site.privacyPolicyUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label={t.privacyLink}
+					>
+						{t.privacy}
 					</a>
 				</div>
 			</footer>

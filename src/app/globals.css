@@ -76,6 +76,9 @@ html[lang="en"] h1 { letter-spacing: -2px; }
 
 .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 10px; }
 .footer-row p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--body-text); }
+.footer-legal { margin-top: 8px; font-size: 12px; color: var(--muted); }
+.footer-legal a { display: inline-block; padding-block: 8px; }
+.footer-legal a:hover { color: var(--accent-text); }
 
 /* First-screen cover wall */
 .hero { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); align-items: center; gap: 36px; text-align: left; padding-block: 34px 60px; }

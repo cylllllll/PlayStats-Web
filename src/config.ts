@@ -14,6 +14,8 @@ export const site = {
 		en: "Your PlayStation companion for iPhone and iPad. Explore your library, playtime, trophies and PSN spending with Live Activities, widgets and share cards.",
 	},
 	telegramUrl: "https://t.me/PlayStatsApp",
+	privacyPolicyUrl:
+		"https://www.termsfeed.com/live/4adcb48b-6f91-4dee-8235-08db14b8c89c",
 	description:
 		"为 PlayStation 玩家打造的数据伴侣。游戏库、游玩时长、奖杯进度与 PSN 消费，记录你的游戏历程。",
 	// Set the verified public URLs here or through the build environment.
