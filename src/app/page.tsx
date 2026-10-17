@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { FaApple } from "react-icons/fa";
 import { FiArrowUpRight, FiGlobe } from "react-icons/fi";
@@ -20,8 +21,7 @@ const copy = {
 		telegram: "Telegram 社群",
 		telegramLink: "Telegram 社群（新标签页）",
 		privacy: "隐私政策",
-		privacyLink: "隐私政策（新标签页）",
-		explore: "探索 App",
+		privacyLink: "查看隐私政策",
 		eyebrow: "为 PlayStation 玩家打造",
 		intro: ["游戏库、", "游玩时长", "、奖杯与消费。"],
 		introEnd: ["在 PlayStats，回顾你的", "游戏历程", "。"],
@@ -41,7 +41,6 @@ const copy = {
 	},
 	tw: {
 		home: "PlayStats 首頁",
-		explore: "探索 App",
 		eyebrow: "為 PlayStation 玩家打造",
 		intro: ["遊戲庫、", "遊玩時長", "、獎盃與消費。"],
 		introEnd: ["在 PlayStats，回顧你的", "遊戲歷程", "。"],
@@ -64,7 +63,7 @@ const copy = {
 		telegram: "Telegram 社群",
 		telegramLink: "Telegram 社群（新分頁）",
 		privacy: "隱私政策",
-		privacyLink: "隱私政策（新分頁）",
+		privacyLink: "查看隱私政策",
 	},
 	en: {
 		home: "PlayStats home",
@@ -74,8 +73,7 @@ const copy = {
 		telegram: "Telegram community",
 		telegramLink: "Telegram community (opens in a new tab)",
 		privacy: "Privacy Policy",
-		privacyLink: "Privacy Policy (opens in a new tab)",
-		explore: "Explore the app",
+		privacyLink: "Read the Privacy Policy",
 		eyebrow: "BUILT FOR PLAYSTATION PLAYERS",
 		intro: ["Your library, ", "playtime", ", trophies and spending."],
 		introEnd: ["Rediscover your ", "gaming journey", " with PlayStats."],
@@ -147,9 +145,6 @@ export default function HomePage() {
 					PlayStats
 				</a>
 				<nav className="header-actions" aria-label={t.navigation}>
-					<a className="nav-link" href="#screenshots">
-						{t.explore} <span aria-hidden="true">↗</span>
-					</a>
 					<IconSelect
 						label={t.language}
 						Icon={FiGlobe}
@@ -280,9 +275,18 @@ export default function HomePage() {
 				</section>
 			</main>
 			<footer className="footer wrap">
-				<a className="footer-brand" href="/">
-					PlayStats
-				</a>
+				<div className="footer-top">
+					<a className="footer-brand" href="/">
+						PlayStats
+					</a>
+					<Link
+						className="footer-legal"
+						href={site.privacyPolicyUrl}
+						aria-label={t.privacyLink}
+					>
+						{t.privacy}
+					</Link>
+				</div>
 				<div className="footer-row">
 					<p>{t.footer}</p>
 					<a
@@ -294,16 +298,6 @@ export default function HomePage() {
 						title={t.telegram}
 					>
 						<RiTelegram2Fill aria-hidden="true" />
-					</a>
-				</div>
-				<div className="footer-legal">
-					<a
-						href={site.privacyPolicyUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={t.privacyLink}
-					>
-						{t.privacy}
 					</a>
 				</div>
 			</footer>

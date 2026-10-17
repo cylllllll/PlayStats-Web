@@ -78,8 +78,8 @@ export const metadata: Metadata = {
 		description: site.descriptions.cn,
 		images: [
 			{
-				url: "/og-image-v6.jpg",
-				secureUrl: `${site.url}/og-image-v6.jpg`,
+				url: site.shareImageUrl,
+				secureUrl: `${site.url}${site.shareImageUrl}`,
 				type: "image/jpeg",
 				width: 1200,
 				height: 630,
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
 		description: site.descriptions.cn,
 		images: [
 			{
-				url: "/og-image-v6.jpg",
+				url: site.shareImageUrl,
 				alt: "PlayStats — 游戏库、游玩时长、奖杯与消费",
 			},
 		],

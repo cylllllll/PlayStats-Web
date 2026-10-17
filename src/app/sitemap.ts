@@ -16,5 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 				"04-share.jpg",
 			].map((file) => `${site.url}/assets/screenshots/${file}`),
 		},
+		{
+			url: `${site.url}${site.privacyPolicyUrl}`,
+			lastModified: "2026-09-12",
+			changeFrequency: "yearly",
+			priority: 0.3,
+		},
 	];
 }

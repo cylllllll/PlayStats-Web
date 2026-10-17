@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import { site } from "@/config";
 import {
@@ -17,6 +18,9 @@ const LanguageContext = createContext<{
 }>({ language: "en", setLanguage: () => {} });
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	const [language, updateLanguage] = useState<Language>("en");
+	const pathname = usePathname();
+	const privacy =
+		pathname === "/privacy-policy" || pathname === "/privacy-policy/";
 	useEffect(() => {
 		let saved: string | null = null;
 		try {
@@ -39,8 +43,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 	}
 	return (
 		<LanguageContext.Provider value={{ language, setLanguage }}>
-			<title>{site.titles[language]}</title>
-			<meta name="description" content={site.descriptions[language]} />
+			<title>
+				{privacy ? site.privacy.titles[language] : site.titles[language]}
+			</title>
+			<meta
+				name="description"
+				content={
+					privacy
+						? site.privacy.descriptions[language]
+						: site.descriptions[language]
+				}
+			/>
 			{children}
 		</LanguageContext.Provider>
 	);
