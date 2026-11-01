@@ -28,6 +28,6 @@
 		"@types/react-dom": "^19.2.4",
 		"postcss": "^8.5.25",
 		"typescript": "7.0.2",
-		"wrangler": "4.149.0"
+		"wrangler": "4.156.0"
 	}
 }
