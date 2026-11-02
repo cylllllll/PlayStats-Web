@@ -33,8 +33,8 @@ export const site = {
 	// Set the verified public URLs here or through the build environment.
 	appStoreUrl:
 		process.env.NEXT_PUBLIC_APP_STORE_URL ||
-		"https://apps.apple.com/us/app/playstats/id6799940098",
+		"https://apps.apple.com/app/playstats/id6799940098",
 	testFlightUrl:
 		process.env.NEXT_PUBLIC_TESTFLIGHT_URL ||
-		"https://testflight.apple.com/join/JAkUz1B6",
+		"https://testflight.apple.com/join/PgHGqJdv",
 };

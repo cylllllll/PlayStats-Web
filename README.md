@@ -4,8 +4,8 @@
   <p><strong>每一场游戏，都有你的记录。</strong></p>
   <p>为 PlayStation 玩家打造的数据伴侣，回顾、整理和分享你的游戏历程。</p>
   <p>
-    <a href="https://apps.apple.com/us/app/playstats/id6799940098">App Store 下载</a> ·
-    <a href="https://testflight.apple.com/join/JAkUz1B6">加入 TestFlight</a>
+    <a href="https://apps.apple.com/app/playstats/id6799940098">App Store 下载</a> ·
+    <a href="https://testflight.apple.com/join/PgHGqJdv">加入 TestFlight</a>
   </p>
   <p>iPhone · iPad · 中文 / English</p>
 </div>
@@ -37,7 +37,7 @@ PlayStats is an independent companion app for PlayStation players. Bring your li
 - **Live Activities & widgets** — Keep your gaming information on the Lock Screen, Dynamic Island and Home Screen.
 - **Share cards** — Turn playtime and trophy progress into images to save and share.
 
-[Download on the App Store](https://apps.apple.com/us/app/playstats/id6799940098) · [Join TestFlight](https://testflight.apple.com/join/JAkUz1B6)
+[Download on the App Store](https://apps.apple.com/app/playstats/id6799940098) · [Join TestFlight](https://testflight.apple.com/join/PgHGqJdv)
 
 ---
 
